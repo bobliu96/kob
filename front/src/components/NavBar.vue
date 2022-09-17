@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
+    <div class="container">
       <router-link class="navbar-brand" :to="{ name: 'home' }"
         >King of Bots</router-link
       >
@@ -39,7 +39,7 @@
             >
           </li>
         </ul>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" v-if="$store.state.user.is_login">
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -48,7 +48,7 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              User
+              {{ $store.state.user.username }}
             </a>
             <ul class="dropdown-menu">
               <li>
@@ -59,8 +59,33 @@
                 >
               </li>
               <li>
-                <router-link class="dropdown-item" :to="{ name: '' }"
-                  >Logout</router-link
+                <a class="dropdown-item" href="#" @click="logout">Logout</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="navbar-nav" v-else-if="!$store.state.user.pulling_info">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Login/Register
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <router-link
+                  class="dropdown-item"
+                  :to="{ name: 'user_account_login' }"
+                  >login</router-link
+                >
+              </li>
+              <li>
+                <router-link class="dropdown-item" :to="{ name: 'user_account_register' }"
+                  >Register</router-link
                 >
               </li>
             </ul>
