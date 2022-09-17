@@ -6,6 +6,9 @@ export default {
     username: "",
     photo: "",
     token: "",
+    firstName: "",
+    lastName: "",
+    emailAddress: "",
     is_login: false,
     pulling_info: true, //whether pulling information or not
   },
@@ -15,6 +18,9 @@ export default {
       state.id = user.id;
       state.username = user.username;
       state.photo = user.photo;
+      state.firstName = user.firstName;
+      state.lastName = user.lastName;
+      state.emailAddress = user.emailAddress;
       state.is_login = user.is_login;
     },
 
@@ -26,6 +32,9 @@ export default {
       state.id = "";
       state.username = "";
       state.photo = "";
+      state.firstName = "";
+      state.lastName = "";
+      state.emailAddress = "";
       state.token = "";
       state.is_login = false;
     },
