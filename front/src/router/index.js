@@ -6,6 +6,7 @@ import UserBotIndexView from "../views/user/bot/UserBotIndexView";
 import NotFound from "../views/error/NotFound";
 import UserAccountLoginView from "../views/user/account/UserAccountLoginView";
 import UserAccountRegisterView from "../views/user/account/UserAccountRegisterView";
+import UserProfileView from "../views/user/profile/UserProfileView"
 import store from '../store/index'
 
 const routes = [
@@ -47,6 +48,14 @@ const routes = [
     path: "/user/bot/",
     name: "user_bot_index",
     component: UserBotIndexView,
+    meta: {
+      requestAuth: true,
+    },
+  },
+  {
+    path: "/user/profile/",
+    name: "user_profile",
+    component: UserProfileView,
     meta: {
       requestAuth: true,
     },

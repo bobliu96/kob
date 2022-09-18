@@ -59,6 +59,13 @@
                 >
               </li>
               <li>
+                <router-link
+                  class="dropdown-item"
+                  :to="{ name: 'user_profile' }"
+                  >Profile</router-link
+                >
+              </li>
+              <li>
                 <a class="dropdown-item" href="#" @click="logout">Logout</a>
               </li>
             </ul>
