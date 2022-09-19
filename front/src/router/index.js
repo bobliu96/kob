@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import HomeView from "../views/home/HomeView"
 import BattleIndexView from "../views/battle/BattleIndexView";
 import RecordIndexView from "../views/record/RecordIndexView";
 import RankingIndexView from "../views/ranklist/RanklistIndexView";
@@ -13,9 +14,9 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: BattleIndexView,
+    component: HomeView,
     meta: {
-      requestAuth: true,
+      requestAuth: false,
     },
   },
   {
@@ -61,7 +62,7 @@ const routes = [
     },
   },
   {
-    path: "/user/account/login",
+    path: "/user/account/login/",
     name: "user_account_login",
     component: UserAccountLoginView,
     meta: {
@@ -69,7 +70,7 @@ const routes = [
     },
   },
   {
-    path: "/user/account/register",
+    path: "/user/account/register/",
     name: "user_account_register",
     component: UserAccountRegisterView,
     meta: {

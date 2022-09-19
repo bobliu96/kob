@@ -71,7 +71,7 @@
             </ul>
           </li>
         </ul>
-        <ul class="navbar-nav" v-else-if="!$store.state.user.pulling_info">
+        <ul class="navbar-nav" v-else>
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
