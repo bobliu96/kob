@@ -70,7 +70,8 @@ public class UpdateProfileServiceImpl implements UpdateProfileService {
                 user.getPhoto(),
                 user.getFirstName(),
                 user.getLastName(),
-                emailAddress);
+                emailAddress,
+                user.getRating());
 
         userMapper.updateById(new_user);
 
