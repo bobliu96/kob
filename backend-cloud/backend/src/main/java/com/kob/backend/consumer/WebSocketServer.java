@@ -31,7 +31,7 @@ public class WebSocketServer {
     private static UserMapper userMapper;
     public static RecordMapper recordMapper;
     private static BotMapper botMapper;
-    private static RestTemplate restTemplate;
+    public static RestTemplate restTemplate;
     private Game game = null;
 
     private final static String addPlayerUrl = "http://127.0.0.1:3001/player/add/";
@@ -139,9 +139,13 @@ public class WebSocketServer {
     }
     private void move(int direction) {
         if (game.getPlayerA().getId().equals(user.getId())) {
-            game.setNextStepA(direction);
+            if (game.getPlayerA().getBotId().equals(-1)){ // Only when user operates
+                game.setNextStepA(direction);
+            }
         } else if (game.getPlayerB().getId().equals(user.getId())) {
-            game.setNextStepB(direction);
+            if (game.getPlayerB().getBotId().equals(-1)){ // Only when user operates
+                game.setNextStepB(direction);
+            }
         }
     }
 

@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.kob.backend.consumer.WebSocketServer;
 import com.kob.backend.pojo.Bot;
 import com.kob.backend.pojo.Record;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,6 +25,8 @@ public class Game extends Thread{
     private ReentrantLock lock = new ReentrantLock();
     private String status = "playing"; // playing -> finished
     private String loser = ""; // all: draw, A: A lose, B: B lose
+
+    private final static String addBotUrl = "http://127.0.0.1:3002/bot/add/";
 
     public Game(Integer rows, Integer cols, Integer innerWallsCount, Integer idA, Bot botA, Integer idB, Bot botB) {
         this.rows = rows;
@@ -131,12 +135,45 @@ public class Game extends Thread{
         }
     }
 
+    private String getGameData(Player player) {
+        Player self, opponent;
+
+        if (playerA.getId().equals(player.getId())){
+            self = playerA;
+            opponent = playerB;
+        } else {
+            self = playerB;
+            opponent = playerA;
+        }
+
+        return getMapString() + "#" +
+                self.getSx() + "#" +
+                self.getSy() + "#(" +
+                self.getStepsString() + ")#" +
+                opponent.getSx() + "#" +
+                opponent.getSy() + "#(" +
+                opponent.getStepsString() + ")";
+    }
+
+    private void sendBotCode(Player player) {
+        if (player.getBotId().equals(-1)) return; // User operation, no need to send code
+        MultiValueMap<String, String> data = new LinkedMultiValueMap<>();
+        data.add("user_id", player.getId().toString());
+        data.add("bot_code", player.getBotCode());
+        data.add("input", getGameData(player));
+
+        WebSocketServer.restTemplate.postForObject(addBotUrl, data, String.class);
+    }
     private boolean nextStep() { //Wait for next step
         try {
             Thread.sleep(200);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
+        sendBotCode(playerA);
+        sendBotCode(playerB);
+
         for (int i = 0; i < 50; i ++) {
             try {
                 Thread.sleep(100);
