@@ -66,9 +66,9 @@
                         >Bot Code</label
                       >
                       <VAceEditor
-                        :value="botadd.content"
+                        v-model:value="botadd.content"
                         @init="editorInit"
-                        lang="python"
+                        lang="java"
                         theme="textmate"
                         style="height: 300px"
                         :options="{
@@ -140,8 +140,8 @@
                         <div class="modal-dialog modal-xl">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">
-                                Create Bot
+                              <h5 class="modal-title" id="UpdateBotModalLabel">
+                                Update Bot
                               </h5>
                               <button
                                 type="button"
@@ -152,39 +152,39 @@
                             </div>
                             <div class="modal-body">
                               <div class="mb-3">
-                                <label for="add-bot-title" class="form-label"
+                                <label for="update-bot-title" class="form-label"
                                   >Bot Name</label
                                 >
                                 <input
                                   v-model="bot.title"
                                   type="text"
                                   class="form-control"
-                                  id="add-bot-title"
+                                  id="update-bot-title"
                                   placeholder="Enter bot name..."
                                 />
                               </div>
                               <div class="mb-3">
                                 <label
-                                  for="add-bot-description"
+                                  for="update-bot-description"
                                   class="form-label"
                                   >Bot Description</label
                                 >
                                 <textarea
                                   v-model="bot.description"
                                   class="form-control"
-                                  id="add-bot-description"
+                                  id="update-bot-description"
                                   rows="3"
                                   placeholder="Enter bot description..."
                                 ></textarea>
                               </div>
                               <div class="mb-3">
-                                <label for="add-bot-code" class="form-label"
+                                <label for="update-bot-code" class="form-label"
                                   >Bot Code</label
                                 >
                                 <VAceEditor
-                                  :value="bot.content"
+                                  v-model:value="bot.content"
                                   @init="editorInit"
-                                  lang="python"
+                                  lang="java"
                                   theme="textmate"
                                   style="height: 300px"
                                   :options="{
@@ -204,6 +204,7 @@
                                 type="button"
                                 class="btn btn-secondary"
                                 data-bs-dismiss="modal"
+                                @click="refresh_bots"
                               >
                                 Cancel
                               </button>
@@ -354,6 +355,7 @@ export default {
       add_bot,
       update_bot,
       remove_bot,
+      refresh_bots,
     };
   },
 };
