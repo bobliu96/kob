@@ -13,9 +13,11 @@
             <img :src="user.photo" alt="" class="user-photo" />
             <!-- space -->
             &nbsp;
-            <span class="user-username">{{ user.username }}</span>
+            <span class="user-username" v-if="user.username === $store.state.user.username" style="color:red;font-weight: bold;">{{ user.username }}</span>
+            <span class="user-username" v-else >{{ user.username }}</span>
           </td>
-          <td>{{ user.rating }}</td>
+          <td v-if="user.username === $store.state.user.username" style="color:red;font-weight: bold;">{{ user.rating }}</td>
+          <td v-else>{{ user.rating }}</td>
         </tr>
       </tbody>
     </table>

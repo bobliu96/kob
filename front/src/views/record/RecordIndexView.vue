@@ -16,12 +16,14 @@
             <img :src="record.a_photo" alt="" class="record-user-photo" />
             <!-- space -->
             &nbsp;
-            <span class="record-user-username">{{ record.a_username }}</span>
+            <span class="record-user-username" v-if="record.a_username === $store.state.user.username" style="color:red;font-weight: bold;">{{ record.a_username }}</span>
+            <span class="record-user-username" v-else>{{ record.a_username }}</span>
           </td>
           <td>
             <img :src="record.b_photo" alt="" class="record-user-photo" />
             &nbsp;
-            <span class="record-user-username">{{ record.b_username }}</span>
+            <span class="record-user-username" v-if="record.b_username === $store.state.user.username" style="color:red;font-weight: bold;">{{ record.b_username }}</span>
+            <span class="record-user-username" v-else>{{ record.b_username }}</span>
           </td>
           <td>{{ record.result }}</td>
           <td>{{ record.record.createTime }}</td>
