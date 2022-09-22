@@ -176,7 +176,7 @@ export default {
 
 <style scoped>
 img.record-user-photo {
-  width: 5vh;
+  width: 4vh;
   border-radius: 50%;
 }
 </style>
