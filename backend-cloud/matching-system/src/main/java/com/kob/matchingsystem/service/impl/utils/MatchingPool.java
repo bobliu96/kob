@@ -24,10 +24,10 @@ public class MatchingPool extends Thread{
         MatchingPool.restTemplate = restTemplate;
     }
 
-    public void addPlayer(Integer userId, Integer rating, Integer botId) {
+    public void addPlayer(Integer userId, Integer rating, Integer botId, Integer win, Integer lose, Integer draw) {
         lock.lock();
         try {
-            players.add(new Player(userId, rating, botId,0));
+            players.add(new Player(userId, rating, botId,0, win, lose, draw));
         } finally {
             lock.unlock();
         }

@@ -8,6 +8,11 @@
         <div class="user-username">
           {{ $store.state.user.username }}
         </div>
+        <div class="user-history">
+          Win: {{ $store.state.user.win }}<br />
+          Lose: {{ $store.state.user.lose }}<br />
+          Draw: {{ $store.state.user.draw }}
+        </div>
       </div>
       <div class="col-4">
         <div class="user-select-bot">
@@ -29,6 +34,11 @@
         </div>
         <div class="user-username">
           {{ $store.state.battle.opponent_username }}
+        </div>
+        <div class="user-history">
+          Win: {{ $store.state.battle.opponent_win }}<br />
+          Lose: {{ $store.state.battle.opponent_lose }}<br />
+          Draw: {{ $store.state.battle.opponent_draw }}
         </div>
       </div>
       <div class="col-12" style="text-align: center; padding-top: 15vh">
@@ -87,9 +97,8 @@ export default {
         },
       });
     };
-
     refresh_bots();
-
+console.log(store.state.battle);
     return {
       match_btn_info,
       click_match_btn,
@@ -118,6 +127,13 @@ div.user-photo > img {
 div.user-username {
   text-align: center;
   font-size: 24px;
+  font-weight: 600;
+  color: white;
+  padding-top: 2vh;
+}
+div.user-history {
+  text-align: center;
+  font-size: 16px;
   font-weight: 600;
   color: white;
   padding-top: 2vh;

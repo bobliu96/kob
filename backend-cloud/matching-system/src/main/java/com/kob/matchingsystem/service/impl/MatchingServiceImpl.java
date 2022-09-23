@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 public class MatchingServiceImpl implements MatchingService {
     public final static MatchingPool matchingPool = new MatchingPool();
     @Override
-    public String addPlayer(Integer userId, Integer rating, Integer botId) {
+    public String addPlayer(Integer userId, Integer rating, Integer botId, Integer win, Integer lose, Integer draw) {
         System.out.println("add player:" + userId + " " + rating);
-        matchingPool.addPlayer(userId, rating, botId);
+        matchingPool.addPlayer(userId, rating, botId, win, lose, draw);
         return "add player success";
     }
 

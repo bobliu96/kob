@@ -12,4 +12,7 @@ public class Player {
     private Integer rating;
     private Integer botId;
     private Integer waitingTime;
+    private Integer win;
+    private Integer lose;
+    private Integer draw;
 }

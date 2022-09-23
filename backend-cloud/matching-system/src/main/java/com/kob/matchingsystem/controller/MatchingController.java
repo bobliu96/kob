@@ -19,7 +19,10 @@ public class MatchingController {
         Integer userId = Integer.parseInt(Objects.requireNonNull(data.getFirst("user_id")));
         Integer rating = Integer.parseInt(Objects.requireNonNull(data.getFirst("rating")));
         Integer botId = Integer.parseInt(Objects.requireNonNull(data.getFirst("bot_id")));
-        return matchingService.addPlayer(userId, rating, botId);
+        Integer win = Integer.parseInt(Objects.requireNonNull(data.getFirst("win")));
+        Integer lose = Integer.parseInt(Objects.requireNonNull(data.getFirst("lose")));
+        Integer draw = Integer.parseInt(Objects.requireNonNull(data.getFirst("draw")));
+        return matchingService.addPlayer(userId, rating, botId, win, lose, draw);
     }
 
     @PostMapping("/player/remove/")

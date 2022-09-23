@@ -50,6 +50,9 @@ export default {
           store.commit("updateOpponent", {
             username: data.opponent_username,
             photo: data.opponent_photo,
+            win: data.opponent_win,
+            lose: data.opponent_lose,
+            draw: data.opponent_draw,
           });
           setTimeout(() => {
             store.commit("updateStatus", "playing");

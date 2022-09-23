@@ -109,6 +109,9 @@ public class WebSocketServer {
         respA.put("event", "start-matching");
         respA.put("opponent_username", b.getUsername());
         respA.put("opponent_photo", b.getPhoto());
+        respA.put("opponent_win", b.getWin());
+        respA.put("opponent_lose", b.getLose());
+        respA.put("opponent_draw", b.getDraw());
         respA.put("game", respGame);
         if (users.get(a.getId()) != null) {
             users.get(a.getId()).sendMessage(respA.toJSONString());
@@ -117,6 +120,9 @@ public class WebSocketServer {
         respB.put("event", "start-matching");
         respB.put("opponent_username", a.getUsername());
         respB.put("opponent_photo", a.getPhoto());
+        respB.put("opponent_win", a.getWin());
+        respB.put("opponent_lose", a.getLose());
+        respB.put("opponent_draw", a.getDraw());
         respB.put("game", respGame);
         if (users.get(b.getId()) != null) {
             users.get(b.getId()).sendMessage(respB.toJSONString());
@@ -128,6 +134,9 @@ public class WebSocketServer {
         data.add("user_id", this.user.getId().toString());
         data.add("rating", this.user.getRating().toString());
         data.add("bot_id", botId.toString());
+        data.add("win", this.user.getWin().toString());
+        data.add("lose", this.user.getLose().toString());
+        data.add("draw", this.user.getDraw().toString());
         restTemplate.postForObject(addPlayerUrl, data, String.class);
     }
 
