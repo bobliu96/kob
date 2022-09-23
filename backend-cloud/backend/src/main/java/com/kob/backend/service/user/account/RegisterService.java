@@ -8,5 +8,8 @@ public interface RegisterService {
                                         String confirmedPassword,
                                         String firstName,
                                         String lastName,
-                                        String emailAddress);
+                                        String emailAddress,
+                                        Integer win,
+                                        Integer lose,
+                                        Integer draw);
 }

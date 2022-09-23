@@ -9,6 +9,9 @@ export default {
     firstName: "",
     lastName: "",
     emailAddress: "",
+    win: "",
+    lose: "",
+    draw: "",
     is_login: false,
     pulling_info: true, //whether pulling information or not
   },
@@ -21,6 +24,9 @@ export default {
       state.firstName = user.firstName;
       state.lastName = user.lastName;
       state.emailAddress = user.emailAddress;
+      state.win = user.win;
+      state.lose = user.lose;
+      state.draw = user.draw;
       state.is_login = user.is_login;
     },
 
@@ -35,6 +41,9 @@ export default {
       state.firstName = "";
       state.lastName = "";
       state.emailAddress = "";
+      state.win = "",
+      state.lose = "",
+      state.draw =  "",
       state.token = "";
       state.is_login = false;
     },

@@ -5,6 +5,10 @@
         <tr>
           <th>Player Name</th>
           <th>Rating</th>
+          <th>Win</th>
+          <th>Lose</th>
+          <th>Draw</th>
+          <th>Win Rate</th>
         </tr>
       </thead>
       <tbody>
@@ -18,6 +22,11 @@
           </td>
           <td v-if="user.username === $store.state.user.username" style="color:red;font-weight: bold;">{{ user.rating }}</td>
           <td v-else>{{ user.rating }}</td>
+          <td >{{ user.win }}</td>
+          <td >{{ user.lose }}</td>
+          <td >{{ user.draw }}</td>
+          <td v-if="user.win + user.lose + user.draw === 0">{{ 0 }}</td>
+          <td v-else>{{ (user.win/(user.win + user.lose + user.draw)).toFixed(3) }}</td>
         </tr>
       </tbody>
     </table>

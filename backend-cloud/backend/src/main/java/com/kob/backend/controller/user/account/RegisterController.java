@@ -21,6 +21,6 @@ public class RegisterController {
         String firstName = map.get("firstName");
         String lastName = map.get("lastName");
         String emailAddress = map.get("emailAddress");
-        return registerService.register(username, password, confirmedPassword, firstName, lastName, emailAddress);
+        return registerService.register(username, password, confirmedPassword, firstName, lastName, emailAddress, 0, 0, 0);
     }
 }

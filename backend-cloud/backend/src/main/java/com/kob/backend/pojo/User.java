@@ -19,4 +19,7 @@ public class User {
     private String lastName;
     private String emailAddress;
     private Integer rating;
+    private Integer win;
+    private Integer lose;
+    private Integer draw;
 }

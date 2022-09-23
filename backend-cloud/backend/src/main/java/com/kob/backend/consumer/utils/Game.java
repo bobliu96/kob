@@ -268,16 +268,38 @@ public class Game extends Thread{
         Integer ratingA = WebSocketServer.userMapper.selectById(playerA.getId()).getRating();
         Integer ratingB = WebSocketServer.userMapper.selectById(playerB.getId()).getRating();
 
+        Integer winA = WebSocketServer.userMapper.selectById(playerA.getId()).getWin();
+        Integer winB = WebSocketServer.userMapper.selectById(playerB.getId()).getWin();
+
+        Integer loseA = WebSocketServer.userMapper.selectById(playerA.getId()).getLose();
+        Integer loseB = WebSocketServer.userMapper.selectById(playerB.getId()).getLose();
+
+        Integer drawA = WebSocketServer.userMapper.selectById(playerA.getId()).getDraw();
+        Integer drawB = WebSocketServer.userMapper.selectById(playerB.getId()).getDraw();
+
         if ("A".equals(loser)) {
             ratingA -= 2;
             ratingB += 5;
+
+            winB += 1;
+            loseA += 1;
+
         } else if ("B".equals(loser)) {
             ratingA += 5;
             ratingB -= 2;
+
+            winA += 1;
+            loseB += 1;
+        } else {
+            drawA += 1;
+            drawB += 1;
         }
 
         updateUserRating(playerA, ratingA);
         updateUserRating(playerB, ratingB);
+
+        updateUserGameRecord(playerA, winA, loseA, drawA);
+        updateUserGameRecord(playerB, winB, loseB, drawB);
 
         Record record = new Record(
                 null,
@@ -299,6 +321,14 @@ public class Game extends Thread{
     private void updateUserRating(Player player, Integer rating) {
         User user = WebSocketServer.userMapper.selectById(player.getId());
         user.setRating(rating);
+        WebSocketServer.userMapper.updateById(user);
+    }
+
+    private void updateUserGameRecord(Player player, Integer win, Integer lose, Integer draw) {
+        User user = WebSocketServer.userMapper.selectById(player.getId());
+        user.setWin(win);
+        user.setLose(lose);
+        user.setDraw(draw);
         WebSocketServer.userMapper.updateById(user);
     }
 
