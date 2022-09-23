@@ -98,7 +98,7 @@ export default {
       });
     };
     refresh_bots();
-console.log(store.state.battle);
+
     return {
       match_btn_info,
       click_match_btn,

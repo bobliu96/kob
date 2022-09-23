@@ -162,6 +162,18 @@ export default {
             b_steps: record.record.bsteps,
           });
           store.commit("updateRecordLoser", record.record.loser);
+          store.commit("updatePlayerInfo", {
+            a_photo: record.a_photo,
+            a_username: record.a_username,
+            a_win: record.a_win,
+            a_lose: record.a_lose,
+            a_draw: record.a_draw,
+            b_photo: record.b_photo,
+            b_username: record.b_username,
+            b_win: record.b_win,
+            b_lose: record.b_lose,
+            b_draw: record.b_draw,
+          });
           router.push({
             name: "record_content",
             params: { recordId },
